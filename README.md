@@ -27,7 +27,7 @@ Use it in a playbook as follows, assuming you already have docker setup:
   roles:
     - role: angstwad.docker_ubuntu
       become: true
-    - role: wangsha.docker-registry_frontend
+    - role: wangsha.docker-registry-frontend
       become: true
 ```
 
