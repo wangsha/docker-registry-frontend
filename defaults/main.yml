@@ -1,0 +1,29 @@
+registry_host: localhost
+registry_port: 5000
+
+docker_registry_frontend_name: registry_frontend
+docker_registry_frontend_image: konradkleine/docker-registry-frontend:v2
+
+docker_registry_frontend_memory_limit: 512MB
+docker_registry_frontend_net: default
+
+docker_registry_frontend_expose:
+  - 80
+docker_registry_frontend_ports:
+  - 80:80
+
+docker_registry_frontend_directory_volumes: []
+docker_registry_frontend_file_volumes: []
+docker_registry_frontend_volumes: "{{ docker_registry_frontend_directory_volumes + docker_registry_frontend_file_volumes }}"
+docker_registry_frontend_env:
+  ENV_DOCKER_REGISTRY_HOST: "{{ registry_host }}"
+  ENV_DOCKER_REGISTRY_PORT: "{{ registry_port }}"
+docker_registry_frontend_links: []
+docker_registry_frontend_log_driver: syslog
+docker_registry_frontend_log_opt:
+  syslog-facility: local0
+  syslog-tag: "{{ docker_registry_frontend_name }}"
+docker_api_version: 1.21
+
+# work around error: Failed to remove container (XXX): Error response from daemon: Unable to remove filesystem for XXX: remove /var/lib/docker/containers/XXX/shm: device or resource busy
+docker_registry_frontend_force_remove: false
