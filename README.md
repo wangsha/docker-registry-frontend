@@ -1,4 +1,4 @@
-docker-registry_frontend
+docker-registry-frontend
 ============
 
 [![Build Status](https://travis-ci.org/wangsha/docker-registry-frontend.svg?branch=master)](https://travis-ci.org/wangsha/docker-registry_frontend)
