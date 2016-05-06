@@ -32,6 +32,17 @@
     - upgrade
 
 
+- name: Remove existing {{ docker_registry_frontend_name }} container
+  docker:
+    docker_api_version: "{{ docker_api_version }}"
+    image: "{{ docker_registry_frontend_image }}"
+    name: "{{ docker_registry_frontend_name }}"
+    state: absent
+  tags:
+    - install
+    - upgrade
+
+
 - name: Run docker registry_frontend container
   docker:
     docker_api_version: "{{ docker_api_version }}"
